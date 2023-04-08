@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
 
@@ -12,6 +14,7 @@ import java.io.Serializable;
 @Setter
 @Getter
 public class OrderLine implements Serializable {
-    private int quantity;
+    @DocumentReference
     private Product product;
+    private int quantity;
 }
