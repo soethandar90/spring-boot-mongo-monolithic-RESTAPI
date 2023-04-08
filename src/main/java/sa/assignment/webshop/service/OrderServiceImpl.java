@@ -2,6 +2,7 @@ package sa.assignment.webshop.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sa.assignment.webshop.dataaccess.CustomerCollection;
 import sa.assignment.webshop.dataaccess.OrderCollection;
 import sa.assignment.webshop.domain.Order;
 
@@ -15,6 +16,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order addOrder(Order order) {
+
         return orderCollection.save(order);
     }
 
