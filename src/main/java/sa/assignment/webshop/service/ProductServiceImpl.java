@@ -7,6 +7,7 @@ import sa.assignment.webshop.domain.Product;
 
 import java.util.List;
 import java.util.Optional;
+
 @Service
 public class ProductServiceImpl implements ProductService {
     @Autowired
@@ -19,7 +20,28 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product updateProduct(String productNumber, Product product) {
-        return productCollection.save(product);
+        Product existingProduct = getProduct(productNumber).get();
+        if (existingProduct!=null) {
+            return null;
+        }
+
+        if(existingProduct.getDescription()!=product.getDescription()){
+            existingProduct.setDescription(product.getDescription());
+        }
+
+        if(existingProduct.getPrice()!=product.getPrice()){
+            existingProduct.setPrice(product.getPrice());
+        }
+
+        if(existingProduct.getStock()!=product.getStock()){
+            existingProduct.setPrice(product.getPrice());
+        }
+
+        if(existingProduct.getSupplier()!=product.getSupplier()){
+            existingProduct.setSupplier(product.getSupplier());
+        }
+
+        return productCollection.save(existingProduct);
     }
 
     @Override

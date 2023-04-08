@@ -19,7 +19,7 @@ public class ProductController {
         return productService.addProduct(product);
     }
 
-    @PutMapping
+    @PutMapping("/{productNumber}")
     public Product updateProduct(@PathVariable String productNumber, @RequestBody Product product) {
         return productService.updateProduct(productNumber, product);
     }
