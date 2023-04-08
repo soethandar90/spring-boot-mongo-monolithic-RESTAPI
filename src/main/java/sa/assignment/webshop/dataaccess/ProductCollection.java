@@ -1,7 +1,8 @@
 package sa.assignment.webshop.dataaccess;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 import sa.assignment.webshop.domain.Product;
-
-public interface ProductDAO extends MongoRepository<Product,String> {
+@Repository
+public interface ProductCollection extends MongoRepository<Product,String> {
 }
