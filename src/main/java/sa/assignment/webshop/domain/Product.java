@@ -6,15 +6,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.validation.annotation.Validated;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
+
 @Document("product")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@Validated
 public class Product implements Serializable {
     @Id
     private String productNumber;
