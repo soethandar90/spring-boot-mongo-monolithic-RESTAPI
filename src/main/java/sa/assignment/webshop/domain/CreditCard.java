@@ -1,9 +1,6 @@
 package sa.assignment.webshop.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
@@ -12,6 +9,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Getter
 @Setter
+@EqualsAndHashCode
 public class CreditCard implements Serializable {
     private String number;
     private String validateDate;

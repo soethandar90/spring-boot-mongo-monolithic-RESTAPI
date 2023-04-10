@@ -2,6 +2,7 @@ package sa.assignment.webshop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import sa.assignment.webshop.contract.ShoppingCartDto;
 import sa.assignment.webshop.domain.ShoppingCart;
 import sa.assignment.webshop.service.ShoppingCartService;
 
@@ -15,22 +16,22 @@ public class ShoppingCartController {
     private ShoppingCartService shoppingCartService;
 
     @PostMapping
-    public ShoppingCart addShoppingCart(@RequestBody ShoppingCart shoppingCart) {
+    public ShoppingCartDto addShoppingCart(@RequestBody ShoppingCart shoppingCart) {
         return shoppingCartService.addShoppingCart(shoppingCart);
     }
 
-    @PutMapping
-    public ShoppingCart updateShoppingCart(@PathVariable String shoppingCartNumber, @RequestBody ShoppingCart shoppingCart) {
+    @PutMapping("/{shoppingCartNumber}")
+    public ShoppingCartDto updateShoppingCart(@PathVariable String shoppingCartNumber, @RequestBody ShoppingCart shoppingCart) {
         return shoppingCartService.updateShoppingCart(shoppingCartNumber, shoppingCart);
     }
 
     @GetMapping("/{shoppingCartNumber}")
-    public Optional<ShoppingCart> getShoppingCart(@PathVariable String shoppingCartNumber) {
+    public Optional<ShoppingCartDto> getShoppingCart(@PathVariable String shoppingCartNumber) {
         return shoppingCartService.getShoppingCart(shoppingCartNumber);
     }
 
     @GetMapping
-    public List<ShoppingCart> getShoppingCartList() {
+    public List<ShoppingCartDto> getShoppingCartList() {
         return shoppingCartService.getShoppingCartList();
     }
 

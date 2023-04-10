@@ -1,9 +1,6 @@
 package sa.assignment.webshop.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.validation.annotation.Validated;
@@ -17,10 +14,11 @@ import java.util.List;
 @Getter
 @Setter
 @Validated
+@EqualsAndHashCode(exclude = {"productNumber", "stock", "reviewList"})
 public class Product implements Serializable {
     @Id
     private String productNumber;
-    private String description;
+    private String name;
     private double price;
     private Stock stock;
     private Supplier supplier;

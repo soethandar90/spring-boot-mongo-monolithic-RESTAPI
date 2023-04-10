@@ -1,9 +1,6 @@
 package sa.assignment.webshop.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -13,6 +10,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Setter
 @Getter
+@EqualsAndHashCode
 public class OrderLine implements Serializable {
     @DocumentReference
     private Product product;
