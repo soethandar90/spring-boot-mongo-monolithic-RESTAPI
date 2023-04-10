@@ -1,24 +1,14 @@
-package sa.assignment.webshop.domain;
+package sa.assignment.webshop.contract;
 
-import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
-import org.springframework.data.mongodb.core.mapping.Field;
+import sa.assignment.webshop.domain.*;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-@Document("order")
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-@EqualsAndHashCode
-public class Order implements Serializable {
-    @Id
+@Data
+public class OrderDto {
     private String orderNumber;
     private LocalDate date;
     private String status;
@@ -29,5 +19,4 @@ public class Order implements Serializable {
     private ShippingOption shippingOption;
     @DocumentReference
     private Customer customer;
-
 }

@@ -2,6 +2,7 @@ package sa.assignment.webshop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import sa.assignment.webshop.contract.OrderDto;
 import sa.assignment.webshop.domain.Order;
 import sa.assignment.webshop.service.OrderService;
 
@@ -15,22 +16,22 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping
-    public Order addOrder(@RequestBody Order order) {
+    public OrderDto addOrder(@RequestBody Order order) {
         return orderService.addOrder(order);
     }
 
-    @PutMapping
-    public Order updateOrder(@PathVariable String orderNumber, @RequestBody Order order) {
+    @PutMapping("/{orderNumber}")
+    public OrderDto updateOrder(@PathVariable String orderNumber, @RequestBody Order order) {
         return orderService.updateOrder(orderNumber, order);
     }
 
     @GetMapping("/{orderNumber}")
-    public Optional<Order> getOrder(@PathVariable String orderNumber) {
+    public Optional<OrderDto> getOrder(@PathVariable String orderNumber) {
         return orderService.getOrder(orderNumber);
     }
 
     @GetMapping
-    public List<Order> getOrderList() {
+    public List<OrderDto> getOrderList() {
         return orderService.getOrderList();
     }
 

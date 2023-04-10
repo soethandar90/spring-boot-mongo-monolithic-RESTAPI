@@ -10,6 +10,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 public class Address implements Serializable {
     private String street;
     private String city;

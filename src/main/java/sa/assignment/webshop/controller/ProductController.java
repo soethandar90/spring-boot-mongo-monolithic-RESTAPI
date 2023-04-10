@@ -1,7 +1,10 @@
 package sa.assignment.webshop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import sa.assignment.webshop.contract.ProductDto;
 import sa.assignment.webshop.domain.Product;
 import sa.assignment.webshop.service.ProductService;
 
@@ -15,27 +18,28 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping
-    public Product addProduct(@RequestBody Product product) {
-        return productService.addProduct(product);
+    public ResponseEntity<ProductDto> addProduct(@RequestBody Product product) {
+        return new ResponseEntity<ProductDto>(productService.addProduct(product), HttpStatus.CREATED);
     }
 
     @PutMapping("/{productNumber}")
-    public Product updateProduct(@PathVariable String productNumber, @RequestBody Product product) {
-        return productService.updateProduct(productNumber, product);
+    public ResponseEntity<ProductDto> updateProduct(@PathVariable String productNumber, @RequestBody Product product) {
+        return new ResponseEntity<>(productService.updateProduct(productNumber, product), HttpStatus.OK);
     }
 
     @GetMapping("/{productNumber}")
-    public Optional<Product> getProduct(@PathVariable String productNumber) {
-        return productService.getProduct(productNumber);
+    public ResponseEntity<Optional<ProductDto>> getProduct(@PathVariable String productNumber) {
+        return new ResponseEntity<>(productService.getProduct(productNumber), HttpStatus.OK);
     }
 
     @GetMapping
-    public List<Product> getProductList() {
-        return productService.getProductList();
+    public ResponseEntity<List<ProductDto>> getProductList() {
+        return new ResponseEntity<>(productService.getProductList(), HttpStatus.OK);
     }
 
     @DeleteMapping("/{productNumber}")
-    public void deleteProduct(@PathVariable String productNumber) {
+    public ResponseEntity deleteProduct(@PathVariable String productNumber) {
         productService.deleteProduct(productNumber);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }

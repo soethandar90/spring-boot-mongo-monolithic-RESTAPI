@@ -13,6 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Getter
 @Setter
+@EqualsAndHashCode
 public class Account implements Serializable {
     private String accountNumber;
     private String username;
